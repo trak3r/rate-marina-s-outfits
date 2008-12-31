@@ -1,24 +1,13 @@
-<h1>Listing videos</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Thumbnail url</th>
-    <th>Youtube</th>
-  </tr>
-
+<style>
+div.thumbnail {
+  float: left;
+  width: 150px;
+  height: 120px;
+  text-align: center;
+}
+</style>
 <% for video in @videos %>
-  <tr>
-    <td><%=h video.title %></td>
-    <td><%=h video.thumbnail_url %></td>
-    <td><%=h video.youtube_id %></td>
-    <td><%= link_to 'Show', video %></td>
-    <td><%= link_to 'Edit', edit_video_path(video) %></td>
-    <td><%= link_to 'Destroy', video, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <div class="thumbnail">
+    <%= link_to(image_tag(video.thumbnail_url, :alt => h(video.title)), video) %>
+  </div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New video', new_video_path %>
