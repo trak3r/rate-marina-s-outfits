@@ -3,37 +3,22 @@
 #
 # Be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
-development:
-  # Sqlite Settings
-#  adapter: jdbcmysql
-#  database: db/development.sqlite3
-#  pool: 5
-#  timeout: 5000
-
-  # Mysql Settings
+credentials: &credentials
   adapter: mysql
   encoding: utf8
-  database: bort_development
   username: root
   password: haxored
   pool: 5
   host: localhost
   socket: '/tmp/mysql.sock'
+
+development:
+  <<: *credentials
+  database: bort_development
   
 test:
-  # Sqlite Settings
-  adapter: jdbcmysql
-  database: db/development.sqlite3_test
-  pool: 5
-  timeout: 5000
-
-  # Mysql Settings
-  # adapter: mysql
-  # encoding: utf8
-  # database: bort_development
-  # username: root
-  # password:
-  # pool: 5
+  <<: *credentials
+  database: bort_test
 
 production:
   # Sqlite Settings
