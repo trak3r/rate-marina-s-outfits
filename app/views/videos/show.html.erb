@@ -1,6 +1,7 @@
 <h1>
   <%= h(@video.title) %>
 </h1>  
+<%= ratings_for @video %>
 <object width="425" height="344">
   <param name="movie"
          value="<%= @video.embed_url -%>"></param>

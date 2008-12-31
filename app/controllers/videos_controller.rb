@@ -1,6 +1,18 @@
 class VideosController < ApplicationController
-  require_role "admin", :for_all_except => [:index, :show]
+  require_role "admin", :for_all_except => [:index, :show, :rate]
+  protect_from_forgery :except => :rate
   
+  def rate
+    @video = Video.find(params[:id])
+    @video.rate(params[:stars], current_user)
+    id = "ajaxful-rating-video-#{@video.id}"
+    render :update do |page|
+      page.replace_html id, ratings_for(@video, :static, :wrap => false)
+      page.insert_html :bottom, id, "Thanks for rating!"
+      page.visual_effect :highlight, id
+    end
+  end
+
   # GET /videos
   # GET /videos.xml
   def index

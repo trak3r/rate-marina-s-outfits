@@ -1,6 +1,8 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
+  ajaxful_rater
+
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
