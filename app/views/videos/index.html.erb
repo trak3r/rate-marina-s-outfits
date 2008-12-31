@@ -1,11 +1,3 @@
-<style>
-div.thumbnail {
-  float: left;
-  width: 150px;
-  height: 120px;
-  text-align: center;
-}
-</style>
 <% for video in @videos %>
   <div class="thumbnail">
     <%= link_to(image_tag(video.thumbnail_url, :alt => h(video.title)), video) %>

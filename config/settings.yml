@@ -1,17 +1,18 @@
+basics: &basics
+  site_name: Rate Marina's Outfits
+  admin_email: marina@anachromystic.com
+
 development: &non_production_settings
+  <<: *basics
   site_url: http://localhost:3000
-  site_name: Bort
-  admin_email: bort@bort.com
   
 test:
   <<: *non_production_settings
 
 staging:
+  <<: *basics
   site_url: http://staging.example.com
-  site_name: Bort
-  admin_email: bort@bort.com  
   
 production:
+  <<: *basics
   site_url: http://www.example.com
-  site_name: Bort
-  admin_email: bort@bort.com
