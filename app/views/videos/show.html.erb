@@ -1,3 +1,6 @@
+<h1>
+  <%= h(@video.title) %>
+</h1>  
 <object width="425" height="344">
   <param name="movie"
          value="<%= @video.embed_url -%>"></param>
@@ -12,22 +15,3 @@
          width="425"
          height="344"></embed>
 </object>
-
-<p>
-  <b>Title:</b>
-  <%=h @video.title %>
-</p>
-
-<p>
-  <b>Thumbnail url:</b>
-  <%=h @video.thumbnail_url %>
-</p>
-
-<p>
-  <b>Youtube:</b>
-  <%=h @video.youtube_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
