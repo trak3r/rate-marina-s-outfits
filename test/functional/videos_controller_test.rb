@@ -14,7 +14,7 @@ class VideosControllerTest < ActionController::TestCase
 
   test "should create video" do
     assert_difference('Video.count') do
-      post :create, :video => { }
+      post :create, :video => dummy_data
     end
 
     assert_redirected_to video_path(assigns(:video))
@@ -31,7 +31,7 @@ class VideosControllerTest < ActionController::TestCase
   end
 
   test "should update video" do
-    put :update, :id => videos(:one).id, :video => { }
+    put :update, :id => videos(:one).id, :video => dummy_data
     assert_redirected_to video_path(assigns(:video))
   end
 
@@ -41,5 +41,15 @@ class VideosControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to videos_path
+  end
+
+  private
+
+  def dummy_data
+    { :title => "Functional Test Video",
+      :embed_url => "http://youtube.com/test",
+      :thumbnail_url => "http://youtube.com/thumbnails/test",
+      :youtube_id => "SOMERANDOMGARBAGEHASHLIKESTRING"
+    }
   end
 end

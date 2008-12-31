@@ -4,8 +4,10 @@ one:
   title: MyString
   thumbnail_url: MyString
   youtube_id: MyString
+  embed_url: http://youtube.com/one
 
 two:
   title: MyString
   thumbnail_url: MyString
   youtube_id: MyString
+  embed_url: http://youtube.com/two

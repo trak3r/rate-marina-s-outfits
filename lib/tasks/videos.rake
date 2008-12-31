@@ -9,6 +9,7 @@ namespace :videos do
         video.title = episode.title
         video.youtube_id = episode.video_id
         video.thumbnail_url = episode.thumbnails.first.url
+        video.embed_url = episode.media_content.first.url
         video.save!
       end
     end
