@@ -1,4 +1,6 @@
 class VideosController < ApplicationController
+  require_role "admin", :for_all_except => [:index, :show]
+  
   # GET /videos
   # GET /videos.xml
   def index

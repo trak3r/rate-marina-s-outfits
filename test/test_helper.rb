@@ -35,4 +35,12 @@ class Test::Unit::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  # http://alexbrie.net/1526/functional-tests-with-login-in-rails/
+  def login_as(username)
+    old_controller = @controller
+    @controller = SessionsController.new
+    post :create, {:login => username, :password => 'caprica99'}
+    @controller = old_controller
+  end
 end

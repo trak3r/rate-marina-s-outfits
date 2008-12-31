@@ -2,7 +2,8 @@ admin:
   id: 1
   login: admin
   email: admin@example.com
-  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
-  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+  salt: efea15e09bc5391ed429863e8852f8a5a49823db
+  crypted_password: d02600eddafe3eb2badf83f3ed3cf702f54e7623 # caprica99
   # activation_code: adminscode # only if you're activating new signups
   created_at: <%= 1.days.ago.to_s :db %>
+  state: active
