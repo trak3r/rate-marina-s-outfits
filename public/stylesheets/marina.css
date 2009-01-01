@@ -28,6 +28,10 @@ div#logo {
     float: left;
 }
 
+div#logo h1 a {
+    text-decoration: none;
+}
+
 div#membership {
     float:right;
 }
