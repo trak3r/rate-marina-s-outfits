@@ -2,8 +2,11 @@
     font-family: Helvetica;
 }
 
-div#content {
+div#container {
     float: left;
+    margin-right: 10px;
+    width: 80%;
+    border-right: thin solid gray;
 }
 
 div.thumbnail {
@@ -14,7 +17,7 @@ div.thumbnail {
 }
 
 div#header {
-    color: grey;
+    color: gray;
     overflow: hidden;
     width: 100%;
     border-bottom: thin solid black;
@@ -34,13 +37,13 @@ div#membership ul {
 }
 
 div#membership ul li {
-    padding-left: 10px;
+    padding-right: 10px;
     float: left;
 }
 
 div#video {
-    float: left;
     margin-right: 10px;
+    float: left;
 }
 
 div#rating {
