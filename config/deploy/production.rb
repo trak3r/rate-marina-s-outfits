@@ -3,7 +3,7 @@
 #############################################################
 
 set :application, "marina"
-set :deploy_to, "/home/teflonted/marina"
+set :deploy_to, "/home/teflonted/marina.anachromystic.com"
 
 #############################################################
 #	Settings
