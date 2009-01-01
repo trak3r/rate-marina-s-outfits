@@ -1,18 +1,25 @@
-<h1>
-  <%= h(@video.title) %>
-</h1>  
-<%= ratings_for @video %>
-<object width="425" height="344">
-  <param name="movie"
-         value="<%= @video.embed_url -%>"></param>
-  <param name="allowFullScreen"
-         value="true"></param>
-  <param name="allowscriptaccess"
-         value="always"></param>
-  <embed src="<%= @video.embed_url -%>"
-         type="application/x-shockwave-flash"
-         allowscriptaccess="always"
-         allowfullscreen="true"
-         width="425"
-         height="344"></embed>
-</object>
+<div id="wrapper">
+  <div id="video">
+    <object width="425" height="344">
+      <param name="movie"
+             value="<%= @video.embed_url -%>"></param>
+      <param name="allowFullScreen"
+             value="true"></param>
+      <param name="allowscriptaccess"
+             value="always"></param>
+      <embed src="<%= @video.embed_url -%>"
+             type="application/x-shockwave-flash"
+             allowscriptaccess="always"
+             allowfullscreen="true"
+             width="425"
+             height="344"></embed>
+    </object>
+  </div>
+  <div id="rating">
+    <h2>
+      <%= h(@video.title) %>
+    </h2>
+    How hot is Marina's outfit in this video?
+    <%= ratings_for @video %>
+  </div>
+</div>

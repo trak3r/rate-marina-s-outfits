@@ -1,6 +1,43 @@
+* {
+    font-family: Helvetica;
+}
+
 div.thumbnail {
   float: left;
   width: 150px;
   height: 180px;
   text-align: center;
+}
+
+div#header {
+    color: grey;
+    overflow: hidden;
+    width: 100%;
+    border-bottom: thin solid black;
+    margin-bottom: 10px;
+}
+
+div#logo {
+    float: left;
+}
+
+div#membership {
+    float:right;
+}
+
+div#membership ul {
+    list-style-type: none;
+}
+
+div#membership ul li {
+    padding-left: 10px;
+    float: left;
+}
+
+div#video {
+    float: left;
+    margin-right: 10px;
+}
+
+div#rating {
 }
