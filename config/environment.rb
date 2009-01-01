@@ -30,6 +30,7 @@ Rails::Initializer.run do |config|
   config.gem "net-ssh", :lib => "net/ssh", :version => "2.0.4"
   config.gem "net-ssh-gateway", :lib => "net/ssh/gateway", :version => "1.0.0"
   config.gem "net-scp", :lib => "net/scp", :version => "1.0.1"
+  config.gem "net-sftp", :lib => "net/sftp", :version => "2.0.1"
   config.gem "capistrano", :version => '2.5.2'
   config.gem "capistrano-ext", :lib => "capistrano", :version => '1.2.1'
   config.gem 'rubyist-aasm', :lib => 'aasm', :source => 'http://gems.github.com', :version => '2.0.2'
