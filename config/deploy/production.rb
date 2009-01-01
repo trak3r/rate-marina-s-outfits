@@ -48,7 +48,7 @@ namespace :deploy do
       encoding: utf8
       username: trak3r
       password: h0tf0rw0rds
-      database: marina_production
+      database: orlova
       host: mysql.anachromystic.com
     EOF
     
