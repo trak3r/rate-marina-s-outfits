@@ -16,11 +16,12 @@ namespace :dummy do
   desc 'Create dummy Ratings for Videos'
   task :ratings => :environment do
     raise "Don't you want to be doing this in development!?" unless 'development' == RAILS_ENV
+    scores = [ 1, 1, 1, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5 ]
     users = User.all
     videos = Video.all
     users.each do |user|
       videos.each do |video|
-        video.rate(1+rand(5),user)
+        video.rate(scores.rand,user)
       end
     end
   end
