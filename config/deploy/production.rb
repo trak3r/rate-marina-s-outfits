@@ -46,10 +46,10 @@ namespace :deploy do
     production:    
       adapter: mysql
       encoding: utf8
-      username: root
-      password: 
+      username: trak3r
+      password: h0tf0rw0rds
       database: marina_production
-      host: localhost
+      host: mysql.anachromystic.com
     EOF
     
     put db_config, "#{release_path}/config/database.yml"
