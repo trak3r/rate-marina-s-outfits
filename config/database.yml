@@ -14,11 +14,11 @@ credentials: &credentials
 
 development:
   <<: *credentials
-  database: bort_development
+  database: marina_development
   
 test:
   <<: *credentials
-  database: bort_test
+  database: marina_test
 
 production:
   # Sqlite Settings
@@ -30,7 +30,7 @@ production:
   # Mysql Settings
   # adapter: mysql
   # encoding: utf8
-  # database: bort_development
+  # database: marina_development
   # username: root
   # password:
   # pool: 5

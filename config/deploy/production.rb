@@ -2,8 +2,8 @@
 #	Application
 #############################################################
 
-set :application, "bort"
-set :deploy_to, "/path/to/deploy"
+set :application, "marina"
+set :deploy_to, "/home/teflonted/marina"
 
 #############################################################
 #	Settings
@@ -19,8 +19,8 @@ set :rails_env, "production"
 #	Servers
 #############################################################
 
-set :user, "bort"
-set :domain, "www.example.com"
+set :user, "teflonted"
+set :domain, "www.anachromystic.com"
 server domain, :app, :web
 role :db, domain, :primary => true
 
@@ -30,9 +30,9 @@ role :db, domain, :primary => true
 
 set :scm, :git
 set :branch, "master"
-set :scm_user, 'bort'
+set :scm_user, 'trak3r'
 set :scm_passphrase, "PASSWORD"
-set :repository, "git@github.com:FudgeStudios/bort.git"
+set :repository, "git@github.com:trak3r/rate-marina-s-outfits.git"
 set :deploy_via, :remote_cache
 
 #############################################################
@@ -48,7 +48,7 @@ namespace :deploy do
       encoding: utf8
       username: root
       password: 
-      database: bort_production
+      database: marina_production
       host: localhost
     EOF
     
