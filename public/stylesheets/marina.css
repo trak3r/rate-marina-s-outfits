@@ -2,6 +2,10 @@
     font-family: Helvetica;
 }
 
+div#content {
+    float: left;
+}
+
 div.thumbnail {
   float: left;
   width: 150px;
