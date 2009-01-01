@@ -2,6 +2,5 @@
   <div class="thumbnail">
     <%= link_to(image_tag(video.thumbnail_url, :alt => h(video.title)), video) %>
     <%= ratings_for video, :static %>
-    <span id="average"><%= video.rating_average %></span>
   </div>
 <% end %>
