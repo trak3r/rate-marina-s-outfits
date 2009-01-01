@@ -1,5 +1,5 @@
 class Video < ActiveRecord::Base
-  ajaxful_rateable :stars => 5, :allow_update => false
+  ajaxful_rateable :stars => 5
 
   validates_presence_of :title
   validates_presence_of :youtube_id
