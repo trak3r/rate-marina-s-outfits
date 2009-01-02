@@ -22,7 +22,7 @@ namespace :videos do
       video.youtube_id = episode.video_id
       video.published_at = episode.published_at
       video.embed_url = episode.media_content.first.url
-      video.thumbnail_url = episode.thumbnails.first.url
+      video.thumbnail_url = episode.thumbnails.first.url unless video.thumbnail_url
       video.save!
       puts "#{video.title}"
       episode.thumbnails.each do |image|
