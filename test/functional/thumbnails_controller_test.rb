@@ -1,10 +1,14 @@
 require 'test_helper'
 
 class ThumbnailsControllerTest < ActionController::TestCase
+  def setup
+    login_as('admin')
+  end
+
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:thumbnails)
+    assert_not_nil assigns(:videos)
   end
 
   test "should get new" do
@@ -12,13 +16,13 @@ class ThumbnailsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create thumbnail" do
-    assert_difference('Thumbnail.count') do
-      post :create, :thumbnail => { }
-    end
-
-    assert_redirected_to thumbnail_path(assigns(:thumbnail))
-  end
+#  test "should create thumbnail" do
+#    assert_difference('Thumbnail.count') do
+#      post :create, :thumbnail => { }
+#    end
+#
+#    assert_redirected_to thumbnail_path(assigns(:thumbnail))
+#  end
 
   test "should show thumbnail" do
     get :show, :id => thumbnails(:one).id

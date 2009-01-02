@@ -2,5 +2,5 @@
 <%= will_paginate @videos %>
 </div>
 <% for @video in @videos %>
-  <%= render 'thumbnails/assign' %>
+  <%= render :file => 'thumbnails/assign' %>
 <% end %>
