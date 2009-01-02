@@ -1,4 +1,5 @@
 <% @video.thumbnails.each do |thumbnail| %>
+<% next if thumbnail.url.ends_with?('0.jpg') %>
 <% if thumbnail.url == @video.thumbnail_url %>
   <div id="selected">
 <% else %>

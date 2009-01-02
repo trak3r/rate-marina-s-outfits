@@ -53,6 +53,10 @@ div.thumbnail {
 #rating {
 }
 
+#thumbnails {
+    clear: both;
+}
+
 #thumbnails div {
     display: inline;
 }
