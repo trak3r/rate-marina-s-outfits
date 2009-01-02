@@ -1,3 +1,4 @@
+<div id="videos">
 <% for video in @videos %>
   <div class="thumbnail">
     <%= link_to(image_tag(video.thumbnail_url, :alt => h(video.title)), video) %>
@@ -5,3 +6,8 @@
     <%= if_authorized?(:edit, video) do link_to('Edit', edit_video_path(video)) end %>
   </div>
 <% end %>
+</div>
+
+<div id="pagination">
+<%= will_paginate @videos %>
+</div>

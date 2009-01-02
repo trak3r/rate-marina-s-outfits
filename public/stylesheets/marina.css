@@ -2,7 +2,7 @@
     font-family: Helvetica;
 }
 
-div#container {
+#container {
     float: left;
     margin-right: 10px;
     width: 80%;
@@ -16,7 +16,7 @@ div.thumbnail {
   text-align: center;
 }
 
-div#header {
+#header {
     color: gray;
     overflow: hidden;
     width: 100%;
@@ -24,39 +24,49 @@ div#header {
     margin-bottom: 10px;
 }
 
-div#logo {
+#logo {
     float: left;
 }
 
-div#logo h1 a {
+#logo h1 a {
     text-decoration: none;
 }
 
-div#membership {
+#membership {
     float:right;
 }
 
-div#membership ul {
+#membership ul {
     list-style-type: none;
 }
 
-div#membership ul li {
+#membership ul li {
     padding-right: 10px;
     float: left;
 }
 
-div#video {
+#video {
     margin-right: 10px;
     float: left;
 }
 
-div#rating {
+#rating {
 }
 
-div#thumbnails div {
+#thumbnails div {
     display: inline;
 }
 
-div#thumbnails div#selected img {
+#thumbnails #selected img {
     border: thick solid green;
+}
+
+#videos {
+}
+
+#pagination {
+    clear: both;
+    text-align: right;
+    font-size: 150%;
+    padding-right: 20px;
 }

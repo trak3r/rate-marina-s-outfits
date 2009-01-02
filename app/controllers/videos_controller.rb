@@ -24,7 +24,7 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.xml
   def index
-    @videos = Video.find(:all)
+    @videos = Video.paginate :page => params[:page], :per_page => 15
 
     respond_to do |format|
       format.html # index.html.erb
