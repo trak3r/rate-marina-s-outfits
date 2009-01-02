@@ -40,6 +40,13 @@ set :deploy_via, :remote_cache
 #############################################################
 
 namespace :deploy do
+  desc "Apply the crontab file"
+  task :apply_crontab do
+    run "crontab #{release_path}/config/crontab"
+    run "crontab -l" # dump it to the screen so we can verify correct application
+  end
+  after :after_update_code, :apply_crontab
+  
   desc "Create the database yaml file"
   task :after_update_code do
     db_config = <<-EOF
