@@ -1,18 +1,11 @@
 <div id="wrapper">
   <div id="video">
-    <object width="425" height="344">
+    <object width="425" 
+            height="344"
+            type="application/x-shockwave-flash"
+            data="<%=h @video.embed_url %>">
       <param name="movie"
-             value="<%=h @video.embed_url -%>"></param>
-      <param name="allowFullScreen"
-             value="true"></param>
-      <param name="allowscriptaccess"
-             value="always"></param>
-      <embed src="<%=h @video.embed_url -%>"
-             type="application/x-shockwave-flash"
-             allowscriptaccess="always"
-             allowfullscreen="true"
-             width="425"
-             height="344"></embed>
+             value="<%=h @video.embed_url %>" />
     </object>
   </div>
   <div id="rating">
