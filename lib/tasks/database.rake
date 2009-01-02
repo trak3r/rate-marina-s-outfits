@@ -1,24 +1,19 @@
 require 'rake'
 
 namespace :db do
-  desc 'Dump the database to a file'
-  task :dump => :environment do
-    puts "Dumping..."
-  end
-
   desc 'Compress the dumped database'
   task :compress => :environment do
-    puts "Compressing..."
+    exec("gzip --force #{dump_file_name}")
   end
 
   desc 'Mail the compressed database'
   task :mail => :environment do
-    puts "Mailing..."
+    exec("uuencode #{dump_file_name} | mail -s 'Marina Database Backup' marina@anachromystic.com")
   end
 
   desc 'Backup the database (dump, compress, and mail)'
   task :backup => :environment do
-    Rake::Task['db:dump'].invoke
+    Rake::Task['db:database_dump'].invoke
     Rake::Task['db:compress'].invoke
     Rake::Task['db:mail'].invoke
   end
@@ -30,7 +25,7 @@ namespace :db do
     case abcs[RAILS_ENV]["adapter"]
     when 'mysql'
       ActiveRecord::Base.establish_connection(abcs[RAILS_ENV])
-      File.open("db/#{RAILS_ENV}_data.sql", "w+") do |f|
+      File.open(dump_file_name, "w+") do |f|
         if abcs[RAILS_ENV]["password"].blank?
           f << `mysqldump -h #{abcs[RAILS_ENV]["host"]} -u #{abcs[RAILS_ENV]["username"]} #{abcs[RAILS_ENV]["database"]}`
         else
@@ -45,5 +40,11 @@ namespace :db do
     else
       raise "Task not supported by '#{abcs[RAILS_ENV]['adapter']}'" 
     end
+  end
+
+  private
+
+  def dump_file_name
+    "db/#{RAILS_ENV}_data.sql"
   end
 end

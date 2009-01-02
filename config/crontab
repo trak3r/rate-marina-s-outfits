@@ -1,2 +1,3 @@
 MAILTO="marina@anachromystic.com"
-0 5 * * *  cd /home/teflonted/marina.anachromystic.com/current && nice -n 19 rake videos:harvest RAILS_ENV=production
+5 5 * * *  cd /home/teflonted/marina.anachromystic.com/current && nice -n 19 rake videos:harvest RAILS_ENV=production
+15 2 * * *  cd /home/teflonted/marina.anachromystic.com/current && nice -n 19 rake db:backup RAILS_ENV=production
