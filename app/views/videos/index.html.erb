@@ -2,5 +2,6 @@
   <div class="thumbnail">
     <%= link_to(image_tag(video.thumbnail_url, :alt => h(video.title)), video) %>
     <%= ratings_for video, :static %>
+    <%= if_authorized?(:edit, video) do link_to('Edit', edit_video_path(video)) end %>
   </div>
 <% end %>
