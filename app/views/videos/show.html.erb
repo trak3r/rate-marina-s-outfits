@@ -2,12 +2,12 @@
   <div id="video">
     <object width="425" height="344">
       <param name="movie"
-             value="<%= @video.embed_url -%>"></param>
+             value="<%=h @video.embed_url -%>"></param>
       <param name="allowFullScreen"
              value="true"></param>
       <param name="allowscriptaccess"
              value="always"></param>
-      <embed src="<%= @video.embed_url -%>"
+      <embed src="<%=h @video.embed_url -%>"
              type="application/x-shockwave-flash"
              allowscriptaccess="always"
              allowfullscreen="true"
