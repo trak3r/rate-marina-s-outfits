@@ -1,7 +1,6 @@
-<% for @video in @videos %>
-  <%= render 'thumbnails/assign' %>
-<% end %>
-
 <div id="pagination">
 <%= will_paginate @videos %>
 </div>
+<% for @video in @videos %>
+  <%= render 'thumbnails/assign' %>
+<% end %>

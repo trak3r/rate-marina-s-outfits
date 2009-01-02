@@ -64,10 +64,15 @@ div.thumbnail {
 }
 
 div.thumbnails div {
-    padding: 20px;
     display: inline;
 }
 
+div.thumbnails div img {
+    padding: 5px;
+    margin: 5px;
+    border: thin solid white;
+}
+
 div.thumbnails div.selected img {
-    border: thick solid red;
+    border: thin solid red;
 }

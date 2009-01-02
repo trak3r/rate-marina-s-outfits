@@ -13,7 +13,7 @@ class ThumbnailsController < ApplicationController
   # GET /thumbnails
   # GET /thumbnails.xml
   def index
-    @videos = Video.paginate :page => params[:page], :order => 'published_at DESC', :per_page => 5
+    @videos = Video.paginate :page => params[:page], :order => 'published_at DESC', :per_page => 4
 
     respond_to do |format|
       format.html # index.html.erb
