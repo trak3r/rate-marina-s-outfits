@@ -1,0 +1,13 @@
+<% @video.thumbnails.each do |thumbnail| %>
+<% if thumbnail.url == @video.thumbnail_url %>
+  <div id="selected">
+<% else %>
+  <div>
+<% end %>
+<%= link_to_remote( image_tag(thumbnail.url),
+                   :update => 'thumbnails',
+                   :url => { :action => 'thumbnail',
+                             :video_id => @video.id,
+                             :thumbnail_id => thumbnail.id } ) %>
+  </div>
+<% end %>

@@ -1,6 +1,14 @@
 class VideosController < ApplicationController
   require_role "admin", :for_all_except => [:index, :show, :rate]
-  protect_from_forgery :except => :rate
+  protect_from_forgery :except => [:rate, :thumbnail]
+
+  def thumbnail
+    @video = Video.find(params[:video_id])
+    thumbnail = @video.thumbnails.find(params[:thumbnail_id])
+    @video.thumbnail_url = thumbnail.url
+    @video.save!
+    render :layout => false
+  end
   
   def rate
     @video = Video.find(params[:id])

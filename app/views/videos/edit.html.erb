@@ -8,17 +8,10 @@
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :thumbnail_url %><br />
-    <%= f.text_field :thumbnail_url %>
-  </p>
-  <p>
-    <%= f.label :youtube_id %><br />
-    <%= f.text_field :youtube_id %>
-  </p>
-  <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @video %> |
-<%= link_to 'Back', videos_path %>
+<div id="thumbnails">
+<%= render 'videos/thumbnail' %>
+</div>

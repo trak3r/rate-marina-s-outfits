@@ -52,3 +52,11 @@ div#video {
 
 div#rating {
 }
+
+div#thumbnails div {
+    display: inline;
+}
+
+div#thumbnails div#selected img {
+    border: thick solid green;
+}

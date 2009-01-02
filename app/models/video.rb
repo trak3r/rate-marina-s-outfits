@@ -7,4 +7,6 @@ class Video < ActiveRecord::Base
   validates_presence_of :thumbnail_url
   
   validates_uniqueness_of :youtube_id
+
+  has_many :thumbnails
 end
