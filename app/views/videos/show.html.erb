@@ -16,8 +16,3 @@
     <%= ratings_for @video %>
   </div>
 </div>
-<% if_authorized?(:edit, @video) do %>
-<div id="thumbnails">
-<%= render 'videos/thumbnail' %>
-</div>
-<% end %>

@@ -53,18 +53,6 @@ div.thumbnail {
 #rating {
 }
 
-#thumbnails {
-    clear: both;
-}
-
-#thumbnails div {
-    display: inline;
-}
-
-#thumbnails #selected img {
-    border: thick solid green;
-}
-
 #videos {
 }
 
@@ -73,4 +61,13 @@ div.thumbnail {
     text-align: right;
     font-size: 150%;
     padding-right: 20px;
+}
+
+div.thumbnails div {
+    padding: 20px;
+    display: inline;
+}
+
+div.thumbnails div.selected img {
+    border: thick solid red;
 }

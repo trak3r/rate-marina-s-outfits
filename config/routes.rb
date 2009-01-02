@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :thumbnails
+
   map.resources :videos
  
   map.resources :videos, :member => {:rate => :post}
