@@ -7,45 +7,20 @@ class VideosControllerTest < ActionController::TestCase
     assert_not_nil assigns(:videos)
   end
 
-  test "should get new" do
-    login_as('admin')
-    get :new
-    assert_response :success
-  end
-
-  test "should create video" do
-    login_as('admin')
-    assert_difference('Video.count') do
-      post :create, :video => dummy_data
-    end
-
-    assert_redirected_to video_path(assigns(:video))
-  end
-
   test "should show video" do
     get :show, :id => videos(:one).id
     assert_response :success
   end
 
-  test "should get edit" do
-    login_as('admin')
-    get :edit, :id => videos(:one).id
+  test "should not rate video when logged in" do
+    get :rate, {:id => videos(:one).id, :stars => (1+rand(5))}
+    assert_response :redirect
+  end
+
+  test "should rate video when logged in" do
+    login_as('ted')
+    get :rate, {:id => videos(:one).id, :stars => (1+rand(5))}
     assert_response :success
-  end
-
-  test "should update video" do
-    login_as('admin')
-    put :update, :id => videos(:one).id, :video => dummy_data
-    assert_redirected_to video_path(assigns(:video))
-  end
-
-  test "should destroy video" do
-    login_as('admin')
-    assert_difference('Video.count', -1) do
-      delete :destroy, :id => videos(:one).id
-    end
-
-    assert_redirected_to videos_path
   end
 
   private

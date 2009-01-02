@@ -1,13 +1,15 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  title: MyString
-  thumbnail_url: MyString
-  youtube_id: MyString
+  id: 1
+  title: 'Video One'
+  thumbnail_url: http://thumbnails.com/one
+  youtube_id: 'YouTubeVideoOne'
   embed_url: http://youtube.com/one
 
 two:
-  title: MyString
-  thumbnail_url: MyString
-  youtube_id: MyString
+  id: 2
+  title: 'Video Two'
+  thumbnail_url: http://thumbnails.com/two
+  youtube_id: 'YouTubeVideoTwo'
   embed_url: http://youtube.com/two

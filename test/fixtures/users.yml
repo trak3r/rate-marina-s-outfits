@@ -7,3 +7,12 @@ admin:
   # activation_code: adminscode # only if you're activating new signups
   created_at: <%= 1.days.ago.to_s :db %>
   state: active
+ted:
+  id: 2
+  login: ted
+  email: ted@example.com
+  salt: efea15e09bc5391ed429863e8852f8a5a49823db
+  crypted_password: d02600eddafe3eb2badf83f3ed3cf702f54e7623 # caprica99
+  # activation_code: adminscode # only if you're activating new signups
+  created_at: <%= 9.days.ago.to_s :db %>
+  state: active
