@@ -1,6 +1,28 @@
 require 'rake'
 
 namespace :db do
+  desc 'Dump the database to a file'
+  task :dump => :environment do
+    puts "Dumping..."
+  end
+
+  desc 'Compress the dumped database'
+  task :compress => :environment do
+    puts "Compressing..."
+  end
+
+  desc 'Mail the compressed database'
+  task :mail => :environment do
+    puts "Mailing..."
+  end
+
+  desc 'Backup the database (dump, compress, and mail)'
+  task :backup => :environment do
+    Rake::Task['db:dump'].invoke
+    Rake::Task['db:compress'].invoke
+    Rake::Task['db:mail'].invoke
+  end
+  
   desc "Dump the current database to a MySQL file" 
   task :database_dump do
     load 'config/environment.rb'
