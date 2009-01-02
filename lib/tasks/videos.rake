@@ -1,8 +1,21 @@
 namespace :videos do
-  desc 'Load the latest videos from YouTube into the database'
-  task :latest => :environment do
+  desc 'Load *all* the videos from YouTube into the database'
+  task :harvest => :environment do
     client = YouTubeG::Client.new
-    response = client.videos_by(:user => 'hotforwords')
+    page = 1
+    empty = false
+    until empty do
+      puts "Page ##{page}"
+      response = client.videos_by(:user => 'hotforwords', :page => page)
+      process(response)
+      page += 1
+      empty = response.videos.empty?
+    end
+  end
+
+  private
+
+  def process(response)
     response.videos.each do |episode|
       video = Video.find_by_youtube_id(episode.video_id)
       unless video
@@ -13,6 +26,7 @@ namespace :videos do
         video.embed_url = episode.media_content.first.url
         video.save!
       end
+      puts "#{video.title}"
       first = true
       episode.thumbnails.each do |image|
         thumbnail = Thumbnail.find_by_url(image.url)
