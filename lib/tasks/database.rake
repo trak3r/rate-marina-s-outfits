@@ -3,12 +3,12 @@ require 'rake'
 namespace :db do
   desc 'Compress the dumped database'
   task :compress => :environment do
-    exec("gzip --force #{dump_full_path}")
+    system("gzip --force #{dump_full_path}")
   end
 
   desc 'Mail the compressed database'
   task :mail => :environment do
-    exec("uuencode #{dump_full_path}.gz #{dump_file_name}.gz | mail -s 'Marina Database Backup' marina@anachromystic.com")
+    system("uuencode #{dump_full_path}.gz #{dump_file_name}.gz | mail -s 'Marina Database Backup' marina@anachromystic.com")
   end
 
   desc 'Backup the database (dump, compress, and mail)'
