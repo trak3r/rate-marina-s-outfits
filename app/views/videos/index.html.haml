@@ -1,0 +1,7 @@
+#videos
+  - @videos.each do |video|
+    .thumbnail
+      = link_to(image_tag(video.thumbnail_url, :alt => h(video.title)), video)
+      = ratings_for(video, :static)
+#pagination
+  = will_paginate(@videos)

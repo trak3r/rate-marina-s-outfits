@@ -1,0 +1,9 @@
+%div{ :id => "row_#{@video.id}", :class => 'thumbnails' }
+  - @video.thumbnails.each do |thumbnail|
+    - next if thumbnail.url.ends_with?('0.jpg')
+    - if thumbnail.url == @video.thumbnail_url
+      - attribs = { :class => 'selected' }
+    - else
+      - attribs = {}
+    %div{attribs}
+      = link_to_remote( image_tag(thumbnail.url), :update => "row_#{@video.id}", :url => { :action => 'assign', :video_id => @video.id, :thumbnail_id => thumbnail.id } )

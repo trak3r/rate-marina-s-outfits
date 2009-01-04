@@ -1,0 +1,4 @@
+#pagination
+  = will_paginate(@videos)
+- for @video in @videos
+  = render(:file => 'thumbnails/assign')
