@@ -1,9 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :thumbnails
 
-  map.resources :videos
- 
   map.resources :videos, :member => {:rate => :post}
+
+  # Home Page
+  map.root :controller => 'videos', :action => 'index'
 
   # Restful Authentication Rewrites
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
@@ -21,9 +22,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :passwords
   map.resource :session
   
-  # Home Page
-  map.root :controller => 'videos', :action => 'index'
-
   # Install the default routes as the lowest priority.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

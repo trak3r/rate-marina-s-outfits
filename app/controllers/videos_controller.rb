@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  protect_from_forgery :except => [:rate]
+  protect_from_forgery :except => [:rate, :show]
   before_filter :login_required, :only => [:rate]
   
   def rate
@@ -19,6 +19,7 @@ class VideosController < ApplicationController
     @videos = Video.paginate :page => params[:page], :order => 'published_at DESC', :per_page => 12
 
     respond_to do |format|
+      format.js   { render :layout => false }
       format.html # index.html.erb
       format.xml  { render :xml => @videos }
     end
@@ -30,6 +31,7 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
 
     respond_to do |format|
+      format.js   { render :layout => false }
       format.html # show.html.erb
       format.xml  { render :xml => @video }
     end
