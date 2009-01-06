@@ -18,6 +18,10 @@ html,  body
   :margin 0 0 1px 0
   :padding 0
 
+input, select
+  +font-fam
+  +font-11
+
 a img
   :border none
   :vertical-align middle
@@ -63,6 +67,33 @@ a:active
   :font-size 16px
   :background white
   :line-height 160%
+
+.row
+  :padding 10px 0
+  label
+    :display block
+    :font-weight bold
+    :font-size 13px
+
+.half
+  :width 35%
+  :float left
+
+.buttons
+  :margin 10px 0
+
+  input
+    :font-size 14px
+    :font-weight bold
+    :margin 0
+    :border none
+    :padding 6px
+    :background #f06863
+    :color white
+
+h2
+  :font-size 19px
+
 
 
 #pagination
@@ -151,7 +182,7 @@ a:active
 
 .thumbnail
   float: left
-  width: 143px
+  width: 150px
   height: 180px
   text-align: center
 
