@@ -1,10 +1,10 @@
-#header
-  #logo
-    %h1= link_to("Rate Marina's Outfits", '/')
-  #membership
-    %ul
-      - if logged_in?
-        %li= link_to('Logout', logout_path)
-      - else
-        %li= link_to('Login', login_path)
-        %li= link_to('Signup', signup_path)
+
+#nav
+  - if logged_in?
+    Are you tired of learning?
+    = link_to('Log-out', logout_path)
+  - else
+    Want to rate outfits?
+    = link_to('Log Back In', login_path)
+    OR
+    = link_to('Sign-up', signup_path)

@@ -7,7 +7,7 @@ credentials: &credentials
   adapter: mysql
   encoding: utf8
   username: root
-  password: haxored
+  password: 
   pool: 5
   host: localhost
   socket: '/tmp/mysql.sock'
