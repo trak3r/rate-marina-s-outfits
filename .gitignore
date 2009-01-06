@@ -1,3 +1,4 @@
+.dotest/*
 .DS_Store
 public/stylesheets/marina.css
 db/*.gz

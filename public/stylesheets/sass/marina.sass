@@ -1,19 +1,130 @@
-body 
-  font-family: Helvetica
-  background-image: url('/images/background.png')
-  background-repeat: no-repeat
+=font-fam
+  :font-family Helvetica, Arial, sans-serif
+=font-11
+  :font-size 11px
+=bold
+  :font-weight bold
+=no-mar
+  :margin 0 0 0 0
+=no-pad
+  :padding 0 0 0 0
+=neither
+  :padding 0 0 0 0
+  :margin 0 0 0 0
+  
+html,  body
+  :height 100%
+  :margin 0 0 1px 0
+  :padding 0
 
-#container 
+a img
+  :border none
+  :vertical-align middle
 
-#header 
-  color: gray
-  overflow: hidden
+body
+  :background #feece8 url(/images/bg.jpg) no-repeat center top
+  :background-attachment fixed
+  :color #373535
+  +font-11
+  +font-fam
+  :line-height 135%
 
-#logo 
-  float: left
-  h1 a
-    text-decoration: none
+.left
+  :float left
+.half
+  :width 46%
+.right
+  :float right
+p
+  +neither
 
+.tr, div.tr, td.tr, th.tr
+  :text-align right
+a
+  :color #ce413e
+  :text-decoration none
+  &:hover
+    :text-decoration underline
+  &:focus
+    :outline none
+
+a:active
+  :outline none
+
+.clear
+  :clear both
+
+#welcome
+  :padding 20px
+  :border 1px solid #ccc
+  :margin -15px 0 40px 0
+  :font-weight bold
+  :font-size 16px
+  :background white
+  :line-height 160%
+  
+  
+#pagination 
+  :padding 10px 0
+  :clear both
+  :margin-top 10px
+  :text-align center
+  a, .current
+    :padding 5px 
+    :border-top 2px solid #f06863
+    :border-right 2px solid #f06863
+    :border-left 1px solid #792624
+    :border-bottom 1px solid #792624
+    :background #ce413e 
+    :color white
+    :margin 0 2px 0 0
+  .current
+    :background #792624
+    :font-weight bold
+  a:hover
+    :background #792624
+
+#nav
+  :position fixed
+  :top 0px
+  :left 0px
+  :font-size 15px
+  :font-weight bold
+  :width 100%
+  :background #f8eadf
+  :padding 20px 10px
+  :border-bottom 1px solid #f06863
+  :z-index 9999
+  
+  a
+    :font-size 14px
+    :font-weight bold
+    :margin 0 5px
+    :padding 10px
+    :background #f06863
+    :color white
+    
+  
+#container
+  :margin 0 auto
+  +no-pad
+  :width 800px
+
+
+#adsense
+  :width 170px
+  :display none
+  :float right
+  :padding 20px 10px
+  
+#main
+  :width 574px
+  :margin -5px 0 0 74px
+  :background url(/images/content.png) repeat-y
+  :padding 20px 45px 20px 40px
+
+  
+  
 #membership 
   float: right
   ul
@@ -33,11 +144,6 @@ body
   float: left
   border: thin solid gray
 
-#pagination 
-  clear: both
-  text-align: right
-  font-size: 150%
-  padding-right: 20px
 
 .thumbnails
   div
@@ -54,3 +160,5 @@ body
   width: 150px
   height: 180px
   text-align: center
+
+
