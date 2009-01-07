@@ -3,8 +3,9 @@
     %object{ :width => '425', :height => '344', :type => 'application/x-shockwave-flash', :data => "#{h(@video.embed_url)}" }
       %param{ :name => 'movie', :value => "#{h(@video.embed_url)}" }
   #rating
-    %h2= @video.title
-    How hot is Marina's outfit in this video?
+    %h3= @video.title
+    %p
+      How hot is Marina's outfit in this video?
     = ratings_for(@video)
   .clear
 
