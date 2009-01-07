@@ -22,7 +22,7 @@ namespace :db do
     task :dump do
       db_config = YAML::load(ERB.new(IO.read('config/database.yml')).result)['production']
       pw = db_config['password'].eql?('') || db_config['password'].nil? ? '' : '-p'+ db_config['password']
-      system "mysqldump -u #{db_config['username']} #{pw} -Q --disable-keys --add-drop-table -O add-locks=FALSE -O lock-tables=FALSE --ignore-table=#{db_config['database']}.sessions -h #{db_config['host']} #{db_config['database']} > #{dump_file_path}"
+      system "mysqldump -u #{db_config['username']} #{pw} -Q --disable-keys --add-drop-table -O add-locks=FALSE -O lock-tables=FALSE --ignore-table=#{db_config['database']}.sessions -h #{db_config['host']} #{db_config['database']} > #{dump_full_path}"
       Rake::Task['db:compress'].invoke
     end
   end
