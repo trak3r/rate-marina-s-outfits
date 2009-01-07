@@ -14,7 +14,6 @@ namespace :db do
   desc 'Backup the database (dump, compress, and mail)'
   task :backup => :environment do
     Rake::Task['db:data:dump'].invoke
-    Rake::Task['db:compress'].invoke
     Rake::Task['db:mail'].invoke
   end
 
@@ -25,6 +24,7 @@ namespace :db do
       pw = db_config['password'].eql?('') || db_config['password'].nil? ? '' : '-p'+ db_config['password']
       file = ENV['BACKUP_FILE'] || dump_file_path
       system "mysqldump -u #{db_config['username']} #{pw} -Q --disable-keys --add-drop-table -O add-locks=FALSE -O lock-tables=FALSE --ignore-table=#{db_config['database']}.sessions -h #{db_config['host']} #{db_config['database']} > #{file}"
+      Rake::Task['db:compress'].invoke
     end
   end
 
