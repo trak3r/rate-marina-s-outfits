@@ -5,9 +5,8 @@ require File.expand_path("#{File.dirname(__FILE__)}/../vendor/gems/capistrano-ex
 namespace :db do
   desc 'Download the production database (compressed)'
   task :download, :roles => :db, :only => { :primary => true } do
-    backup_file = "#{shared_path}/sync.sql.gz"
-    run "cd #{current_path} && rake db:data:dump BACKUP_FILE='#{backup_file}' RAILS_ENV=production"
-    get backup_file, "./db/production_data.sql.gz"
+    run "cd #{current_path} && rake db:data:dump RAILS_ENV=production"
+    get "#{current_path}/db/production_data.sql.gz", "./db/production_data.sql.gz"
   end
 
   desc 'Sync local development database with production database'
