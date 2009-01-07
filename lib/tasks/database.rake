@@ -3,7 +3,7 @@ require 'rake'
 namespace :db do
   desc 'Compress the dumped database'
   task :compress => :environment do
-    system("gzip --force #{dump_full_path}")
+    system("gzip --force -9 #{dump_full_path}")
   end
 
   desc 'Mail the compressed database'
@@ -13,32 +13,18 @@ namespace :db do
 
   desc 'Backup the database (dump, compress, and mail)'
   task :backup => :environment do
-    Rake::Task['db:database_dump'].invoke
+    Rake::Task['db:data:dump'].invoke
     Rake::Task['db:compress'].invoke
     Rake::Task['db:mail'].invoke
   end
-  
-  desc "Dump the current database to a MySQL file" 
-  task :database_dump do
-    load 'config/environment.rb'
-    abcs = ActiveRecord::Base.configurations
-    case abcs[RAILS_ENV]["adapter"]
-    when 'mysql'
-      ActiveRecord::Base.establish_connection(abcs[RAILS_ENV])
-      File.open(dump_full_path, "w+") do |f|
-        if abcs[RAILS_ENV]["password"].blank?
-          f << `mysqldump -h #{abcs[RAILS_ENV]["host"]} -u #{abcs[RAILS_ENV]["username"]} #{abcs[RAILS_ENV]["database"]}`
-        else
-          f << `mysqldump -h #{abcs[RAILS_ENV]["host"]} -u #{abcs[RAILS_ENV]["username"]} -p#{abcs[RAILS_ENV]["password"]} #{abcs[RAILS_ENV]["database"]}`
-        end
-      end
-    when 'sqlite3'
-      ActiveRecord::Base.establish_connection(abcs[RAILS_ENV])
-      File.open("db/#{RAILS_ENV}_data.sql", "w+") do |f|
-        f << `sqlite3  #{abcs[RAILS_ENV]["database"]} .dump`
-      end
-    else
-      raise "Task not supported by '#{abcs[RAILS_ENV]['adapter']}'" 
+
+  namespace :data do
+    desc "Dump the current database to a MySQL file"
+    task :dump do
+      db_config = load_db_for 'production'
+      pw = db_config['password'].eql?('') || db_config['password'].nil? ? '' : '-p'+ db_config['password']
+      file = ENV['BACKUP_FILE'] || dump_file_path
+      system "mysqldump -u #{db_config['username']} #{pw} -Q --disable-keys --add-drop-table -O add-locks=FALSE -O lock-tables=FALSE --ignore-table=#{db_config['database']}.sessions -h #{db_config['host']} #{db_config['database']} > #{file}"
     end
   end
 

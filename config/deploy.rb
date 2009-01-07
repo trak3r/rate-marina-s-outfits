@@ -2,8 +2,20 @@ set :stages, %w(staging production)
 set :default_stage, "production"
 require File.expand_path("#{File.dirname(__FILE__)}/../vendor/gems/capistrano-ext-1.2.1/lib/capistrano/ext/multistage")
 
-
 namespace :db do
+  desc 'Download the production database (compressed)'
+  task :download, :roles => :db, :only => { :primary => true } do
+    backup_file = "#{shared_path}/sync.sql.gz"
+    run "cd #{current_path}; rake db:data:dump BACKUP_FILE='#{backup_file}' RAILS_ENV=production"
+    get backup_file, "./db/production_data.sql.gz"
+  end
+
+  desc 'Sync local development database with production database'
+  task :sync, :roles => :db, :only => { :primary => true } do
+    download
+    system("rake db:sync_local")
+  end
+
   desc 'Dumps the production database to db/production_data.sql on the remote server'
   task :remote_db_dump, :roles => :db, :only => { :primary => true } do
     run "cd #{deploy_to}/#{current_dir} && " +
