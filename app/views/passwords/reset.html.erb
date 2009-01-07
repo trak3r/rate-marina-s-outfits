@@ -2,19 +2,17 @@
 <% form_for :user, :url => { :action => 'update_after_forgetting' } do |f| %>
   <%= f.error_messages %>
   <p>Please enter a new password and confirm it.</p>
-	<fieldset>
-		<legend>Update Password</legend>
-		<ol>
-			<li>
+
+<div class="row half">
 		    <%= f.label :password %>
 		    <%= f.password_field :password %>
-			</li>
-			<li>
+			</div>
+			
+<div class="row half">
 		    <%= f.label :password_confirmation %>
 		    <%= f.password_field :password_confirmation %>
-			</li>
-		</ol>
-	</fieldset>
+			</div>
+
 	<%= hidden_field_tag :reset_code, params[:reset_code] %>
 	<div class="buttons">
     <%= f.submit "Submit" %>

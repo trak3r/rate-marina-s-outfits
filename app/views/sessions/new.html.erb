@@ -1,24 +1,25 @@
-<%= title "Login", :h2 %>
+<%= title "Welcome back, you barbarian", :h2 %>
 <% form_tag session_path do %>
-	<fieldset>
-		<legend>Your Details</legend>
-		<ol>
-			<li>
-				<%= label_tag 'login', 'Username' %>
-				<%= text_field_tag 'login', @login %>
-			</li>
-			<li>
-				<%= label_tag 'password' %>
-				<%= password_field_tag 'password', nil %>
-			</li>
-			<li>
-				<%= label_tag 'remember_me', 'Remember me' %>
-				<%= check_box_tag 'remember_me', '1', @remember_me %>
-			</li>
-		</ol>
-	</fieldset>
-	<div class="buttons">
-		<%= submit_tag 'Login' %>
-		<%= link_to 'Forgotten Password', forgot_password_path %>
-	</div>
+
+<div class="row half">
+  <%= label_tag 'login', 'Username' %>
+  <%= text_field_tag 'login', @login %>
+</div>
+<div class="row half">
+  <%= label_tag 'password' %>
+  <%= password_field_tag 'password', nil %>
+</div>
+<div class="row half">
+  <label>
+    <%= check_box_tag 'remember_me', '1', @remember_me %>
+    Remember me
+  </label>
+</div>
+
+<div class="clear"></div>
+
+<div class="buttons clear">
+  <%= submit_tag 'Login' %>
+  <%= link_to 'Forgotten Password', forgot_password_path %>
+</div>
 <% end -%>
