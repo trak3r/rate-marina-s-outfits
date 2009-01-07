@@ -21,7 +21,7 @@ namespace :db do
   namespace :data do
     desc "Dump the current database to a MySQL file"
     task :dump do
-      db_config = load_db_for 'production'
+      db_config = YAML::load(ERB.new(IO.read('config/database.yml')).result)['production']
       pw = db_config['password'].eql?('') || db_config['password'].nil? ? '' : '-p'+ db_config['password']
       file = ENV['BACKUP_FILE'] || dump_file_path
       system "mysqldump -u #{db_config['username']} #{pw} -Q --disable-keys --add-drop-table -O add-locks=FALSE -O lock-tables=FALSE --ignore-table=#{db_config['database']}.sessions -h #{db_config['host']} #{db_config['database']} > #{file}"
