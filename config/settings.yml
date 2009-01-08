@@ -15,4 +15,4 @@ staging:
   
 production:
   <<: *basics
-  site_url: http://marina.anachromystic.com/
+  site_url: http://marina.anachromystic.com
