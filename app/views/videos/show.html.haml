@@ -1,13 +1,3 @@
-#wrapper
-  #video
-    %object{ :width => '425', :height => '344', :type => 'application/x-shockwave-flash', :data => "#{h(@video.embed_url)}" }
-      %param{ :name => 'movie', :value => "#{h(@video.embed_url)}" }
-  #rating
-    %h3= @video.title
-    %p
-      How hot is Marina's outfit in this video?
-    = ratings_for(@video)
-  .clear
-
-#backitup
-  = link_to_remote('Back to Home', :method=> 'get', :update => 'content', :url => '/')
+= render :partial => 'welcome'
+= render :partial => 'episode'
+= render :file => 'videos/index'

@@ -16,24 +16,30 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.xml
   def index
-    @videos = Video.delayed.paginate :page => params[:page], :order => 'published_at DESC', :per_page => 12
-
     respond_to do |format|
-      format.html # index.html.erb
-      format.js   { render :layout => false }
-      format.xml  { render :xml => @videos }
+      format.html { congeal(Video.delayed.first) }
+      format.js do
+        @videos = Video.delayed.paginate :page => params[:page], :per_page => 4
+        render :layout => false
+      end
     end
   end
 
   # GET /videos/1
   # GET /videos/1.xml
   def show
-    @video = Video.find(params[:id])
+    congeal(Video.find(params[:id]))
+  end
+
+  private
+
+  def congeal(video)
+    @video =  video
+    @videos = Video.delayed.paginate :page => params[:page], :per_page => 4
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.js   { render :layout => false }
-      format.xml  { render :xml => @video }
+      format.html { render :template => 'videos/show' }
+      format.js   { render :partial => 'videos/episode' }
     end
   end
 end

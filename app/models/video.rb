@@ -10,5 +10,5 @@ class Video < ActiveRecord::Base
 
   has_many :thumbnails
 
-  named_scope :delayed, lambda {{:conditions => ['published_at < ?', 3.days.ago]}}
+  named_scope :delayed, lambda {{:conditions => ['published_at < ?', 3.days.ago], :order => 'published_at DESC'}}
 end

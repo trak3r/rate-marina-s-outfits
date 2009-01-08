@@ -1,13 +1,7 @@
-#welcome
-  %strong
-    Where's the latest video?
-  Out of respect for the traffic <a href="http://www.hotforwords.com/">HotForWords</a> 
-  generates from <a href="http://www.youtube.com/hotforwords">its YouTube channel</a>
-  when releasing new videos, they will be delayed from appearing here by a few days.
 #videos
   - @videos.each do |video|
     .thumbnail
-      = link_to_remote(image_tag(video.thumbnail_url, :alt => h(video.title)), :method=> 'get', :update => 'content', :url => video_url(video))
+      = link_to_remote(image_tag(video.thumbnail_url, :alt => h(video.title)), :method=> 'get', :update => 'episode', :url => {:controller => 'videos', :action => 'show', :id => video.id})
       = ratings_for(video, :static)
-#pagination
-  = will_paginate(@videos, :renderer => 'RemoteLinkRenderer' , :remote => {:update => 'content'} )
+  #pagination
+    = will_paginate(@videos, :renderer => 'RemoteLinkRenderer' , :remote => {:update => 'videos'} )
