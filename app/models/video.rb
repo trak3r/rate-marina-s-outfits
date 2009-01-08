@@ -9,4 +9,6 @@ class Video < ActiveRecord::Base
   validates_uniqueness_of :youtube_id
 
   has_many :thumbnails
+
+  named_scope :delayed, lambda {{:conditions => ['published_at < ?', 3.days.ago]}}
 end
