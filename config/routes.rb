@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :thumbnails
 
   map.resources :videos, :member => {:rate => :post}
+  map.best '/best', :controller => 'videos', :action => 'best'
 
   # Home Page
   map.root :controller => 'videos', :action => 'index'

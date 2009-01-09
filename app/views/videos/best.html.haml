@@ -1,0 +1,7 @@
+#videos
+  - @videos.each do |video|
+    .thumbnail
+      #average
+        = "%.02f" % video.rating_average
+      = link_to(image_tag(video.thumbnail_url, :alt => h(video.title)), video_url(video))
+.clear
