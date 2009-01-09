@@ -34,11 +34,16 @@ namespace :db do
     remote_db_cleanup
   end
 
-  desc 'Downloads the production database and imports it into your local database'
-  task :sync do
-    remote_db_runner
+  desc 'Import the downloaded product dump into the local database'
+  task :remote_db_import do
     db_config = YAML::load(ERB.new(IO.read('config/database.yml')).result)['development']
     pw = db_config['password'].eql?('') || db_config['password'].nil? ? '' : '-p'+ db_config['password']
     system "mysql -u #{db_config['username']} #{pw} #{db_config['database']} < db/production_data.sql"
+  end
+
+  desc 'Downloads the production database and imports it into your local database'
+  task :sync do
+    remote_db_runner
+    remote_db_import
   end
 end
