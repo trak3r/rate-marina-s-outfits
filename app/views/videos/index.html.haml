@@ -4,4 +4,4 @@
       = link_to_remote(image_tag(video.thumbnail_url, :alt => h(video.title)), :method=> 'get', :update => 'episode', :url => {:controller => 'videos', :action => 'show', :id => video.id})
       = ratings_for(video, :static)
   #pagination
-    = will_paginate(@videos, :renderer => 'RemoteLinkRenderer' , :remote => {:update => 'videos'} )
+    = will_paginate(@videos, :renderer => 'RemoteLinkRenderer', :remote => {:url => {:action => 'index'}, :update => 'videos'})
