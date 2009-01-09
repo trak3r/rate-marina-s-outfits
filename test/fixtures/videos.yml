@@ -6,6 +6,7 @@ one:
   thumbnail_url: http://thumbnails.com/one
   youtube_id: 'YouTubeVideoOne'
   embed_url: http://youtube.com/one
+  published_at: <%= 7.days.ago %>
 
 two:
   id: 2
@@ -13,3 +14,4 @@ two:
   thumbnail_url: http://thumbnails.com/two
   youtube_id: 'YouTubeVideoTwo'
   embed_url: http://youtube.com/two
+  published_at: <%= 19.days.ago %>

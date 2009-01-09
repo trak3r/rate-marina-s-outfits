@@ -38,7 +38,7 @@ class VideosController < ApplicationController
   private
 
   def congeal(video)
-    @video =  video
+    @video = video
     @videos = Video.delayed.paginate :page => params[:page], :per_page => 4
     respond_to do |format|
       format.html { render :template => 'videos/show' }
