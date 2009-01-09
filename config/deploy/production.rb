@@ -46,6 +46,9 @@ namespace :deploy do
     run "crontab -l" # dump it to the screen so we can verify correct application
   end
   before 'deploy:finalize_update', 'deploy:apply_crontab'
+
+  after 'deploy', 'deploy:migrate'
+  after 'deploy:migrate', 'deploy:cleanup'
   
   desc "Create the database yaml file"
   task :after_update_code do

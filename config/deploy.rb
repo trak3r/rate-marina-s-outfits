@@ -3,18 +3,6 @@ set :default_stage, "production"
 require File.expand_path("#{File.dirname(__FILE__)}/../vendor/gems/capistrano-ext-1.2.1/lib/capistrano/ext/multistage")
 
 namespace :db do
-  desc 'Download the production database (compressed)'
-  task :download, :roles => :db, :only => { :primary => true } do
-    run "cd #{current_path} && rake db:data:dump RAILS_ENV=production"
-    get "#{current_path}/db/production_data.sql.gz", "./db/production_data.sql.gz"
-  end
-
-  desc 'Sync local development database with production database'
-  task :sync, :roles => :db, :only => { :primary => true } do
-    download
-    system("rake db:sync:local")
-  end
-
   desc 'Dumps the production database to db/production_data.sql on the remote server'
   task :remote_db_dump, :roles => :db, :only => { :primary => true } do
     run "cd #{deploy_to}/#{current_dir} && " +
@@ -44,5 +32,13 @@ namespace :db do
     remote_db_dump
     remote_db_download
     remote_db_cleanup
+  end
+
+  desc 'Downloads the production database and imports it into your local database'
+  task :sync do
+    remote_db_runner
+    db_config = YAML::load(ERB.new(IO.read('config/database.yml')).result)['development']
+    pw = db_config['password'].eql?('') || db_config['password'].nil? ? '' : '-p'+ db_config['password']
+    system "mysql -u #{db_config['username']} #{pw} #{db_config['database']} < db/production_data.sql"
   end
 end
