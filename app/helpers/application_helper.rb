@@ -1,4 +1,12 @@
 module ApplicationHelper
+
+  def tag_it
+    render :partial => 'layouts/analytics'
+  end
+
+  def track_it
+    render :partial => 'layouts/tracker'
+  end
   
   # Sets the page title and outputs title if container is passed in.
   # eg. <%= title('Hello World', :h2) %> will return the following:

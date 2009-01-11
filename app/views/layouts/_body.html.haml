@@ -1,4 +1,5 @@
 %body
+  = tag_it
   #container
     %img{:src => '/images/marina.png', :class => 'png', :style=>'margin-top: 50px;'}
     .clear
@@ -8,4 +9,4 @@
     = render :partial => 'layouts/footer' 
     .clear
       
-  = render :partial => 'layouts/analytics' 
+  = track_it

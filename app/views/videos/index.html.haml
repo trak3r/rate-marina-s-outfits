@@ -5,3 +5,5 @@
       = ratings_for(video, :static)
   #pagination
     = will_paginate(@videos, :renderer => 'RemoteLinkRenderer', :remote => {:url => {:action => 'index'}, :update => 'videos'})
+
+= track_it
