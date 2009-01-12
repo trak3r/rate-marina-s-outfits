@@ -22,14 +22,4 @@ class VideosControllerTest < ActionController::TestCase
     get :rate, {:id => videos(:one).id, :stars => (1+rand(5))}
     assert_response :success
   end
-
-  private
-
-  def dummy_data
-    { :title => "Functional Test Video",
-      :embed_url => "http://youtube.com/test",
-      :thumbnail_url => "http://youtube.com/thumbnails/test",
-      :youtube_id => "SOMERANDOMGARBAGEHASHLIKESTRING"
-    }
-  end
 end
