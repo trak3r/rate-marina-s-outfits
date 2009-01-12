@@ -16,7 +16,6 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.xml
   def index
-    sleep 1
     respond_to do |format|
       format.html do
         if session[:last_video] and 0 < session[:last_video].to_i
@@ -37,7 +36,6 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.xml
   def show
-    sleep 1
     session[:last_video] = params[:id]
     congeal(Video.find(params[:id]))
   end
