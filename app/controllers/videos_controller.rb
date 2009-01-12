@@ -16,8 +16,10 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.xml
   def index
+    params[:page] = session[:last_page] unless params[:page]
+    session[:last_page] = params[:page]
     respond_to do |format|
-      format.html {congeal(Video.delayed.first)}
+      format.html {congeal(Video.find(session[:last_video]) || Video.delayed.first)}
       format.js do
         @videos = Video.delayed.paginate :page => params[:page], :per_page => 4
         render :layout => false
@@ -28,6 +30,7 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.xml
   def show
+    session[:last_video] = params[:id]
     congeal(Video.find(params[:id]))
   end
 
