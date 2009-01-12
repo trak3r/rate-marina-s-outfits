@@ -1,9 +1,10 @@
-#videos
-  - @videos.each do |video|
-    .thumbnail
-      = link_to_remote_show(video)
-      = ratings_for(video, :static)
-  #pagination
-    = will_paginate_remote_index
+%script
+  $('videos_spinner').hide();
+- @videos.each do |video|
+  .thumbnail
+    = link_to_remote_show(video)
+    = ratings_for(video, :static)
+#pagination
+  = will_paginate_remote_index
 
 = track_it
