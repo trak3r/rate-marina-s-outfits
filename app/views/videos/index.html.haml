@@ -1,9 +1,9 @@
 #videos
   - @videos.each do |video|
     .thumbnail
-      = link_to_remote(image_tag(video.thumbnail_url, :alt => h(video.title)), :method=> 'get', :update => 'episode', :url => {:controller => 'videos', :action => 'show', :id => video.id})
+      = link_to_remote_show(video)
       = ratings_for(video, :static)
   #pagination
-    = will_paginate(@videos, :renderer => 'RemoteLinkRenderer', :remote => {:url => {:action => 'index'}, :update => 'videos'})
+    = will_paginate_remote_index
 
 = track_it
