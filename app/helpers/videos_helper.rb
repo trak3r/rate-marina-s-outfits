@@ -10,7 +10,7 @@ module VideosHelper
         :controller => 'videos',
         :action => 'show',
         :id => video.id},
-      :loading => "$('video').innerHTML=$('episode_spinner').innerHTML")
+      :loading => "$('video').innerHTML=$('ajax_spinner').innerHTML")
   end
 
   def will_paginate_remote_index
@@ -21,6 +21,6 @@ module VideosHelper
         :url => {
           :action => 'index'},
         :update => 'videos',
-        :loading => "$('videos').innerHTML=$('videos_spinner').innerHTML"})
+        :loading => "$('videos').innerHTML=$('ajax_spinner').innerHTML"})
   end
 end

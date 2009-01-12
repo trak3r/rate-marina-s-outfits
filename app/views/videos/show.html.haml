@@ -1,9 +1,12 @@
 = render :partial => 'welcome'
-#episode_spinner
-  %img{:src => '/images/spinner.gif'}
+#ajax_spinner
+  .loading
+    %img{:src => '/images/spinner.gif'}
+    %br
+    Please wait while this content loads...
+    .dreamhost
+      (DreamHost can be awfully slow sometimes.)
 #episode
   = render :partial => 'episode'
-#videos_spinner
-  %img{:src => '/images/spinner.gif'}
 #videos
   = render :file => 'videos/index'
