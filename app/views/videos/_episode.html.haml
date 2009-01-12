@@ -2,19 +2,7 @@
   #video
     %object{ :width => '425', :height => '344', :type => 'application/x-shockwave-flash', :data => "#{h(@video.embed_url)}" }
       %param{ :name => 'movie', :value => "#{h(@video.embed_url)}" }
-  #rating
-    %h3= @video.title
-    %p
-      How hot is Marina's outfit in this video?
-    - if current_user
-      = ratings_for(@video)
-    - else
-      %br
-      You need to 
-      = link_to('sign up', signup_path)
-      or
-      = link_to('log in', login_path)
-      to rate the videos.
+  = render :partial => 'rating'
   .clear
 
 = track_it

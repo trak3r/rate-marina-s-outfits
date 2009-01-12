@@ -1,0 +1,22 @@
+#rating
+  %h3= @video.title
+  .rateit
+    How hot is Marina's outfit in this video?
+  - if current_user
+    = ratings_for(@video)
+  - else
+    %br
+    You need to
+    = link_to('sign up', signup_path)
+    or
+    = link_to('log in', login_path)
+    to rate the videos.
+  .others
+    %br
+    - if @video.rating_average > 0
+      Other visitors have rated this video as:
+      = ratings_for(@video, :static)
+    - else
+      Nobody has rated it yet.
+      %em
+        You can be the first!
