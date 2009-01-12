@@ -10,7 +10,6 @@ module VideosHelper
         :controller => 'videos',
         :action => 'show',
         :id => video.id},
-#      :loading => "$('episode_spinner').show(); $('video').hide()"
       :loading => "$('video').innerHTML=$('episode_spinner').innerHTML"
     )
   end
