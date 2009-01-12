@@ -16,6 +16,14 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.xml
   def index
+    if params[:page]
+      @page = params[:page]
+    else
+      if session[:last_page] and 0 < session[:last_page].to_i
+        @page = session[:last_page]
+      end
+    end
+    session[:last_page] = @page
     respond_to do |format|
       format.html do
         if session[:last_video] and 0 < session[:last_video].to_i
@@ -26,8 +34,7 @@ class VideosController < ApplicationController
         congeal(video)
       end
       format.js do
-        page = params[:page]
-        @videos = Video.delayed.paginate :page => page, :per_page => 4
+        @videos = Video.delayed.paginate :page => @page, :per_page => 4
         render :layout => false
       end
     end
@@ -48,7 +55,7 @@ class VideosController < ApplicationController
 
   def congeal(video)
     @video = video
-    @videos = Video.delayed.paginate :page => params[:page], :per_page => 4
+    @videos = Video.delayed.paginate :page => @page, :per_page => 4
     respond_to do |format|
       format.html { render :template => 'videos/show' }
       format.js   { render :partial => 'videos/episode' }
