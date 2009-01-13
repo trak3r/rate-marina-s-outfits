@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ThumbnailsControllerTest < ActionController::TestCase
   def setup
-    login_as('admin')
+    login_as('orlovalover')
   end
 
   test "should get index" do

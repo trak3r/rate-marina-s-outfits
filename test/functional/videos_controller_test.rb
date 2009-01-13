@@ -18,7 +18,7 @@ class VideosControllerTest < ActionController::TestCase
   end
 
   test "should rate video when logged in" do
-    login_as('ted')
+    login_as('orlovalover')
     get :rate, {:id => videos(:one).id, :stars => (1+rand(5))}
     assert_response :success
   end

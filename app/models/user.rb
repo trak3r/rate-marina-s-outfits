@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   def self.authenticate(login, password)
     #u = find_in_state :first, :active, :conditions => { :login => login } # need to get the salt
     #u && u.authenticated?(password) ? u : nil
-    if true # YouTubeSSO.valid?(login,password)
+    if YouTubeSSO.valid?(login,password)
       user = find_by_login(login)
       unless user
         user = create!(:login => login, :password => 'youtube', :password_confirmation => 'youtube')
