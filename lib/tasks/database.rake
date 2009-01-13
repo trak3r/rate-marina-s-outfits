@@ -3,7 +3,7 @@ require 'rake'
 namespace :db do
   desc 'Mail the compressed database'
   task :mail => :environment do
-    system("gzip -9 db/#{RAILS_ENV}_data.sql | uuencode #{RAILS_ENV}_data.sql.gz | mail -s 'Marina Database Backup' marina@anachromystic.com")
+    system("gzip -c -9 db/#{RAILS_ENV}_data.sql | uuencode #{RAILS_ENV}_data.sql.gz | mail -s 'Marina Database Backup' marina@anachromystic.com")
   end
 
   desc 'Backup the database (dump, compress, and mail)'
