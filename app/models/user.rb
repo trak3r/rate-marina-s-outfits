@@ -10,15 +10,15 @@ class User < ActiveRecord::Base
 
   # Validations
   validates_presence_of :login, :if => :not_using_openid?
-  validates_length_of :login, :within => 3..40, :if => :not_using_openid?
+#  validates_length_of :login, :within => 3..40, :if => :not_using_openid?
   validates_uniqueness_of :login, :case_sensitive => false, :if => :not_using_openid?
-  validates_format_of :login, :with => RE_LOGIN_OK, :message => MSG_LOGIN_BAD, :if => :not_using_openid?
-  validates_format_of :name, :with => RE_NAME_OK, :message => MSG_NAME_BAD, :allow_nil => true
-  validates_length_of :name, :maximum => 100
-  validates_presence_of :email, :if => :not_using_openid?
-  validates_length_of :email, :within => 6..100, :if => :not_using_openid?
-  validates_uniqueness_of :email, :case_sensitive => false, :if => :not_using_openid?
-  validates_format_of :email, :with => RE_EMAIL_OK, :message => MSG_EMAIL_BAD, :if => :not_using_openid?
+#  validates_format_of :login, :with => RE_LOGIN_OK, :message => MSG_LOGIN_BAD, :if => :not_using_openid?
+#  validates_format_of :name, :with => RE_NAME_OK, :message => MSG_NAME_BAD, :allow_nil => true
+#  validates_length_of :name, :maximum => 100
+#  validates_presence_of :email, :if => :not_using_openid?
+#  validates_length_of :email, :within => 6..100, :if => :not_using_openid?
+#  validates_uniqueness_of :email, :case_sensitive => false, :if => :not_using_openid?
+#  validates_format_of :email, :with => RE_EMAIL_OK, :message => MSG_EMAIL_BAD, :if => :not_using_openid?
   validates_uniqueness_of :identity_url, :unless => :not_using_openid?
   validate :normalize_identity_url
   
@@ -30,10 +30,33 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :identity_url
 
+#  def password
+#    # dummy method to appease old authentication plug-in I've not yet gutted
+#  end
+#
+#  def password=(ignored)
+#    # dummy method to appease old authentication plug-in I've not yet gutted
+#  end
+#
+#  def password_confirmation=(ignored)
+#    # dummy method to appease old authentication plug-in I've not yet gutted
+#  end
+
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)
-    u = find_in_state :first, :active, :conditions => { :login => login } # need to get the salt
-    u && u.authenticated?(password) ? u : nil
+    #u = find_in_state :first, :active, :conditions => { :login => login } # need to get the salt
+    #u && u.authenticated?(password) ? u : nil
+    if true # YouTubeSSO.valid?(login,password)
+      user = find_by_login(login)
+      unless user
+        user = create!(:login => login, :password => 'youtube', :password_confirmation => 'youtube')
+        user.register!
+        user.activate!
+      end
+      return user
+    else
+      return nil
+    end
   end
   
   # Check if a user has a role.

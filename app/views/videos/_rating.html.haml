@@ -2,13 +2,11 @@
   %h3= @video.title
   .rateit
     How hot is Marina's outfit in this video?
-  - if current_user
+  - if logged_in?
     = ratings_for(@video)
   - else
     %br
     You need to
-    = link_to('sign up', signup_path)
-    or
     = link_to('log in', login_path)
     to rate the videos.
   .others

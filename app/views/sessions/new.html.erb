@@ -1,4 +1,4 @@
-<%= title "Welcome back, you <em>barbarian</em>.", :h2 %>
+<%= title "Log in with your YouTube account name and password.", :h2 %>
 <% form_tag session_path do %>
 
 <div class="row half">
@@ -20,6 +20,5 @@
 
 <div class="buttons clear">
   <%= submit_tag 'Login' %>
-  <%= link_to 'Forgotten Password', forgot_password_path %>
 </div>
 <% end -%>

@@ -1,9 +1,7 @@
 #nav
-  - if logged_in?
-    Are you tired of learning?
-    = link_to('Log-out', logout_path)
+  - if logged_in?    
+    ="Are you tired of learning, #{h(current_user.login)}?"
+    = link_to('Log Out', logout_path)
   - else
     Want to rate outfits?
-    = link_to('Log Back In', login_path)
-    OR
-    = link_to('Sign-up', signup_path)
+    = link_to('Log In', login_path)
