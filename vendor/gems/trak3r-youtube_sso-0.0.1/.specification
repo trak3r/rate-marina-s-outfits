@@ -1,0 +1,64 @@
+--- !ruby/object:Gem::Specification 
+name: trak3r-youtube_sso
+version: !ruby/object:Gem::Version 
+  version: 0.0.1
+platform: ruby
+authors: 
+- Thomas 'Teflon Ted' Davis
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2000-01-13 00:00:00 -05:00
+default_executable: 
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: hpricot
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 0.6.164
+    version: 
+description: Poor-man's single sign-on for YouTube
+email: youtube_sso@rudiment.net
+executables: []
+
+extensions: []
+
+extra_rdoc_files: []
+
+files: 
+- README.txt
+- lib/youtube_sso.rb
+- bin/youtube_sso
+has_rdoc: false
+homepage: http://github.com/trak3r/youtube_sso
+post_install_message: 
+rdoc_options: []
+
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.1
+signing_key: 
+specification_version: 2
+summary: Poor-man's single sign-on for YouTube
+test_files: []
+
