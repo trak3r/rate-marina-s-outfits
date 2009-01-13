@@ -1,6 +1,17 @@
 require 'rake'
 
 namespace :db do
+  desc 'Mail the compressed database'
+  task :mail => :environment do
+    system("gzip -9 db/#{RAILS_ENV}_data.sql | uuencode #{RAILS_ENV}_data.sql.gz | mail -s 'Marina Database Backup' marina@anachromystic.com")
+  end
+
+  desc 'Backup the database (dump, compress, and mail)'
+  task :backup => :environment do
+    Rake::Task['db:database_dump'].invoke
+    Rake::Task['db:mail'].invoke
+  end
+
   desc "Dump the current database to a MySQL file"
   task :database_dump do
     load 'config/environment.rb'
