@@ -70,7 +70,12 @@ module AjaxfulRating # :nodoc:
       .#{options[:class]} { width: #{rateable.class.max_rate_value * 25}px; }
       .#{options[:small_star_class]} { width: #{rateable.class.max_rate_value * 10}px; }
       )
-      width = (rateable.rate_average(true, options[:dimension]) / rateable.class.max_rate_value.to_f) * 100
+      if user && rateable.rated_by?(user, options[:dimension])
+        rating = rateable.rate_by(user, options[:dimension]).stars
+      else
+        rating = rateable.rate_average(true, options[:dimension])
+      end
+      width = (rating / rateable.class.max_rate_value.to_f) * 100
       ul = content_tag(:ul, options[:html]) do
         Range.new(1, rateable.class.max_rate_value).collect do |i|
           build_star rateable, user, i
