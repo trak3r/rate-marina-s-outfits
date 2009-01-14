@@ -7,7 +7,7 @@ class VideosController < ApplicationController
     @video.rate(params[:stars], current_user)
     id = "ajaxful-rating-video-#{@video.id}"
     render :update do |page|
-      page.replace_html id, ratings_for(@video, :static, :wrap => false)
+      page.replace_html id, ratings_for(@video, current_user)
       page.insert_html :bottom, id, "Thanks for rating!"
       page.visual_effect :highlight, id
     end
