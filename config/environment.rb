@@ -38,7 +38,8 @@ Rails::Initializer.run do |config|
   config.gem 'youtube-g', :lib => 'youtube_g', :version => '0.4.9.9'
   config.gem 'haml', :version => '2.0.6'
   config.gem 'trak3r-youtube_sso', :lib => 'youtube_sso', :version => '0.0.1'
-  
+  config.gem 'mocha', :version => '0.9.4'
+
   # These cause problems with irb. Left in for reference
   # config.gem 'rspec-rails', :lib => 'spec/rails', :version => '1.1.11'
   # config.gem 'rspec', :lib => 'spec', :version => '1.1.11'

@@ -40,6 +40,7 @@ class Test::Unit::TestCase
   def login_as(username)
     old_controller = @controller
     @controller = SessionsController.new
+    User.stubs(:authenticate).returns(true)
     post :create, {:login => username, :password => 'caprica99'}
     @controller = old_controller
   end
