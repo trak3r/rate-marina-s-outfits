@@ -6,7 +6,10 @@
     #main
       = render :partial => 'layouts/header'
       = render :partial => 'layouts/content' 
+      = render :partial => 'layouts/disqus_thread'
+      = render :partial => 'layouts/disqus_widget'
     = render :partial => 'layouts/footer' 
     .clear
       
   = track_it
+  = render :partial => 'layouts/disqus_script'
