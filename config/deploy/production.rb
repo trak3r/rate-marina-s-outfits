@@ -39,6 +39,15 @@ set :deploy_via, :remote_cache
 #	Passenger
 #############################################################
 
+after "deploy:update_code", "db:symlink"
+
+namespace :db do
+  desc "Make symlink for database yaml"
+  task :symlink do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  end
+end
+
 namespace :deploy do
   desc "Apply the crontab file"
   task :apply_crontab do
@@ -50,33 +59,6 @@ namespace :deploy do
   after 'deploy', 'deploy:migrate'
   after 'deploy:migrate', 'deploy:cleanup'
   
-  desc "Create the database yaml file"
-  task :after_update_code do
-    db_config = <<-EOF
-    production:    
-      adapter: mysql
-      encoding: utf8
-      username: trak3r
-      password: h0tf0rw0rds
-      database: orlova
-      host: mysql.anachromystic.com
-    EOF
-    
-    put db_config, "#{release_path}/config/database.yml"
-    
-    #########################################################
-    # Uncomment the following to symlink an uploads directory.
-    # Just change the paths to whatever you need.
-    #########################################################
-    
-    # desc "Symlink the upload directories"
-    # task :before_symlink do
-    #   run "mkdir -p #{shared_path}/uploads"
-    #   run "ln -s #{shared_path}/uploads #{release_path}/public/uploads"
-    # end
-  
-  end
-    
   # Restart passenger on deploy
   desc "Restarting mod_rails with restart.txt"
   task :restart, :roles => :app, :except => { :no_release => true } do
