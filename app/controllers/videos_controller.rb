@@ -16,7 +16,7 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.xml
   def show
-    if params[:id]
+    if supplied_id
       if params[:page]
         @page = params[:page]
       else
@@ -25,8 +25,8 @@ class VideosController < ApplicationController
         end
       end
       session[:last_page] = @page
+      @video = Video.find(supplied_id)
       session[:last_video] = params[:id]
-      @video = Video.find(params[:id])
       @videos = Video.delayed.paginate :page => @page, :per_page => 4
     else
       redirect_to video_path(Video.delayed.first)
@@ -35,6 +35,12 @@ class VideosController < ApplicationController
 
   def best
     @videos = Video.best.all(:limit => 12)
+  end
+
+  private
+
+  def supplied_id
+    params[:id] || session[:last_video]
   end
 
 end
