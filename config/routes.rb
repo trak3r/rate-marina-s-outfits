@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.best '/best', :controller => 'videos', :action => 'best'
 
   # Home Page
-  map.root :controller => 'videos', :action => 'index'
+  map.root :controller => 'videos', :action => 'show'
 
   # Restful Authentication Rewrites
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'

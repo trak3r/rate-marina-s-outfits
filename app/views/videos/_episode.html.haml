@@ -1,9 +1,5 @@
-%script
-  $('ajax_spinner').hide();
 #video
   %object{ :width => '425', :height => '344', :type => 'application/x-shockwave-flash', :data => "#{h(@video.embed_url)}" }
     %param{ :name => 'movie', :value => "#{h(@video.embed_url)}" }
 = render :partial => 'rating'
 .clear
-
-= track_it
