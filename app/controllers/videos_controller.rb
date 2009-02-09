@@ -13,6 +13,17 @@ class VideosController < ApplicationController
     end
   end
 
+  # GET /videos
+  # GET /videos.xml
+  def index
+    prep_pagination
+    respond_to do |format|
+      format.js do
+        render :layout => false
+      end
+    end
+  end
+
   # GET /videos/1
   # GET /videos/1.xml
   def show
@@ -27,7 +38,7 @@ class VideosController < ApplicationController
       session[:last_page] = @page
       session[:last_video] = params[:id]
       @video = Video.find(params[:id])
-      @videos = Video.delayed.paginate :page => @page, :per_page => 4
+      prep_pagination
     else
       if session[:last_video]
         redirect_to video_path(Video.find(session[:last_video]))
@@ -39,6 +50,20 @@ class VideosController < ApplicationController
 
   def best
     @videos = Video.best.all(:limit => 12)
+  end
+
+  private
+
+  def prep_pagination
+    if params[:page]
+      @page = params[:page]
+    else
+      if session[:last_page] and 0 < session[:last_page].to_i
+        @page = session[:last_page]
+      end
+    end
+    session[:last_page] = @page
+    @videos = Video.delayed.paginate :page => @page, :per_page => 4
   end
 
 end

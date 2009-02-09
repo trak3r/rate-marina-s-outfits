@@ -1,6 +1,10 @@
+%script
+  $('ajax_spinner').hide();
 - @videos.each do |video|
   .thumbnail
     = linked_thumbnail(video)
     = ratings_for(video, :static)
 #pagination
-  = will_paginate(@videos)
+  = will_paginate_remote_index
+
+= track_it
