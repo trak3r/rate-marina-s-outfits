@@ -1,0 +1,6 @@
+- @videos.each do |video|
+  .thumbnail
+    = linked_thumbnail(video)
+    = ratings_for(video, :static)
+#pagination
+  = will_paginate(@videos)
