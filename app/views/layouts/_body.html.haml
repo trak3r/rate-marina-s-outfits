@@ -1,11 +1,10 @@
 %body
   = tag_it
   #container
-    #spacer_for_nav
-    -#%img{:src => '/images/marina.png', :class => 'png'}
+    #banner
     .clear
     #main
-      = render :partial => 'layouts/header'
+      -#= render :partial => 'layouts/header'
       = render :partial => 'layouts/content'
     = render :partial => 'layouts/footer' 
     .clear
