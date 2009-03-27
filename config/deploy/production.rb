@@ -53,7 +53,7 @@ namespace :deploy do
     run "crontab #{release_path}/config/crontab"
     run "crontab -l" # dump it to the screen so we can verify correct application
   end
-  before 'deploy:finalize_update', 'deploy:apply_crontab'
+  # before 'deploy:finalize_update', 'deploy:apply_crontab'
 
   after 'db:symlink', 'deploy:migrate'
   after 'deploy:migrate', 'deploy:cleanup'
