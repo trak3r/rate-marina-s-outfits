@@ -19,11 +19,11 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'mislav-will_paginate', :version => '2.3.6', :lib => 'will_paginate', :source => 'http://gems.github.com'
-  config.gem 'youtube-g', :lib => 'youtube_g', :version => '0.4.9.9'
+  config.gem 'mislav-will_paginate', :version => '2.3.11', :lib => 'will_paginate', :source => 'http://gems.github.com'
+  config.gem 'youtube-g', :lib => 'youtube_g', :version => '0.5.0'
   config.gem 'haml', :version => '2.2.2'
-  config.gem 'trak3r-youtube_sso', :lib => 'youtube_sso', :version => '0.0.1'
-  config.gem 'mocha', :version => '0.9.4'
+  config.gem 'trak3r-youtube_sso', :lib => 'youtube_sso', :version => '0.0.2'
+  config.gem 'mocha', :version => '0.9.7'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -32,7 +32,7 @@ Rails::Initializer.run do |config|
     'ajaxful-rating', 
     'exception_notification',
     'restful_authentication', 
-    'sass_on_heroku',
+    # 'sass_on_heroku',
     ]
 
   # Skip frameworks you're not going to use. To use Rails without a database,
